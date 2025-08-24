@@ -60,7 +60,7 @@ export default function ActivityList({ activities, dispatch }: ActivityListProps
                             activities.map((activity) => (
                                 <div
                                     key={activity.id}
-                                    className="px-5 py-5 bg-white mt-7 flex justify-between"
+                                    className="px-5 py-5 bg-white mt-7 flex justify-between shadow-md shadow-gray-300 hover:shadow-gray-400"
                                 >
                                     <div className="space-y-2 relative">
                                         <p className={categoryColor(activity.category)}>
