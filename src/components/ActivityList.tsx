@@ -1,15 +1,9 @@
-import type { Dispatch } from "react";
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 import { categories } from "../data/data";
 import type { Activity } from "../types/activity";
-import type { ActivityActions } from "../reducer/activityReducer";
 import type { Category } from "../types/category";
-
-type ActivityListProps = {
-    activities: Activity[],
-    dispatch: Dispatch<ActivityActions>
-};
+import { useActivity } from "../hooks/useActivity";
 
 const categoryName = (category: Category['id']) => {
     return categories.find(cat => cat.id === category)?.name || 'Sin categoría';
@@ -20,7 +14,9 @@ const categoryColor = (category: Category['id']) => {
     return selectedColor.concat(" absolute -top-8 -left-8 px-10 py-2 text-white uppercase font-bold");
 };
 
-export default function ActivityList({ activities, dispatch }: ActivityListProps) {
+export default function ActivityList() {
+    const { state, dispatch } = useActivity();
+    const { activities } = state;
 
     const setActivityId = (id: string) => {
         dispatch({
